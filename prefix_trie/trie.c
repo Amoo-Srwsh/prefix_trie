@@ -1,3 +1,4 @@
+// https://en.wikipedia.org/wiki/Trie
 #include <stdio.c>
 #include <assert.h>
 
