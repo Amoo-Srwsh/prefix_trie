@@ -1,9 +1,12 @@
 // https://en.wikipedia.org/wiki/Trie
-#include <stdio.c>
+#include <stdio.h>
 #include <assert.h>
+
+#include "fruits.h"
 
 typedef struct Node Node;
 struct Node {
+	char c;
 	Node *children[256];
 };
 
@@ -19,13 +22,15 @@ Node *alloc_node (void) // simple allocator function
 
 void insert_text (Node *root, const char *text)
 {
-	if (*text) return;
+	if (*text == '\0') return;
 
 	assert(text != NULL);
 
 	size_t index = (size_t) *text;
-	if (root->children[index] == NULL )
+	if (root->children[index] == NULL ) {
 		root->children[index] = alloc_node();
+		root->children[index]->c = *text;
+	}
 
 	insert_text(root->children[index], text + 1);
 }
