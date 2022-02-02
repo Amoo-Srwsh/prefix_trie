@@ -38,7 +38,7 @@ void insert_text (Node *root, const char *text)
 
 void draw_mem(Node *root)
 {
-	for ( int i = 0; i < 256; i++ ) {
+	for ( int i = 0; i < children_count; i++ ) {
 		if (root->children[i] != NULL) {
 			printf("%c\n", root->children[i]->c);
 			draw_mem(root->children[i]);
